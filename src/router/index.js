@@ -1,0 +1,51 @@
+import Vue from 'vue'
+import Router from 'vue-router'
+// import HelloWorld from '@/components/HelloWorld'
+
+//page
+import Main from '../views/main/Main'
+import GoShoping from '../views/main/goShoping/GoShoping'
+import ShopingCar from '../views/main/shopingCar/ShopingCar'
+import MyShop from '../views/main/myShop/MyShop'
+import UserCenter from '../views/main/userCenter/UserCenter'
+import LoginRegister from '../views/loginRegister/LoginRegister'
+import Start from '../views/startPage/StartPage'
+import ChangePassword from '../views/changePassword/ChangePassword'
+
+
+Vue.use(Router)
+
+const routes = [
+  {
+    path:'/',
+    name:'Main',
+    component:Main,
+    children:[      
+      {path:'/',redirect:'goShoping'},
+      {path:'goShoping',component:GoShoping},
+      {path:'shopingCar',component:ShopingCar},
+      {path:'myShop',component:MyShop},
+      {path:'userCenter',component:UserCenter},
+    ]
+  },
+  {
+    path:'/loginRegister',
+    component:LoginRegister
+  },
+  {
+    path:'/start',
+    component:Start
+  },
+  {
+    path:'/changePassword',
+    component:ChangePassword
+  },
+  {
+    path:'*',
+    redirect:'/loginRegister'
+  }
+]
+
+export default new Router({
+  routes: routes
+})
